@@ -24,7 +24,7 @@ header {
     top: 0;
     left:0;
     width: 100%;
-    padding: 20px 100px;
+    padding: 20px 100px; 
     display: flex;
     justify-content: space-between;
     align-items: center ;
@@ -202,7 +202,7 @@ header {
 }
 
 .input-box .icon{
-    position: absolute; 
+    position: absolute;
     right: 8px;
     font-size: 1.2rem;
     color: #162938;
