@@ -248,6 +248,23 @@ header {
     color: #fff;
     font-weight: 500;
 }
+.btn1{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background: #382916d0;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 3em;
+    color: #fff;
+    font-weight: 500;
+}
+
+.btn1:hover{
+    background: #e08d20d7;
+}
 
 .login-register{
     font-size: .9em ;

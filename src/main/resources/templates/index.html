@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login And Register</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/user/style.css">
 </head>
 <body>
     <header>
         <h2 class="logo">Loan Status Prediction</h2>
         <nav class="navigation">
-            <a href="admin.html">Admin</a>
+            
             <button class="btnLogin-popup">Login</button>  
         </nav>
 
@@ -22,15 +22,22 @@
         <div class="from-box login">
             <h2> Login</h2>
 
-            <form action="#">
+            <form action="userLogin" method="post">
+				<th:block th:if="${param.error}">
+							<h5 class="fw-bold text-danger text-center" id="errorMessage">Incorrect email or password</h6>
+						</th:block>
+						<th:block th:if="${param.logout}">
+							<h5 class="fw-bold text-danger text-center" id="logoutMessage"> 
+								logged out.</h6>
+						</th:block>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                    <input type="mail" required>
+                    <input type="mail" name="username" required>
                     <label for="">Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                    <input type="password" required>
+                    <input type="password" name="password" required>
                     <label for="">Password</label>
                 </div>
                 <div class="remember-forgot">
@@ -48,20 +55,31 @@
         </div>
         <div class="from-box register">
             <h2> Sign up</h2>
-            <form action="#">
+            <form action="saveUser" method="post">
+				<th:block th:if="${session.msg}">
+							<p class="text-center fw-bold text-success" id="successMessage">
+								[[${session.msg}]]
+							</p>
+						</th:block>
+						
+						<th:block th:if="${session.msgError}">
+							<p class="text-center fw-bold text-danger" id="existMessage">
+								[[${session.msgError}]]
+							</p>
+						</th:block>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person"></ion-icon></ion-icon></span>
-                    <input type="text" required>
+                    <input type="text" name="name" required>
                     <label for="">Username</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                    <input type="mail" required>
+                    <input type="mail" name="email" required>
                     <label for="">Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                    <input type="password" required>
+                    <input type="password" name="password" required>
                     <label for="">Password</label>
                 </div>
                 <div class="remember-forgot">
@@ -80,10 +98,38 @@
         </div>
     </div>
 
+ <script th:inline="javascript">
+		setTimeout(function () {
+			// Hide the error message (if present)
+			var errorMessage = document.getElementById('errorMessage');
+			if (errorMessage) {
+				errorMessage.style.display = 'none';
+			}
+
+			// Hide the logout message (if present)
+			var logoutMessage = document.getElementById('logoutMessage');
+			if (logoutMessage) {
+				logoutMessage.style.display = 'none';
+			}
+		}, 5000); // 5000 milliseconds = 5 seconds
+		
+		    setTimeout(function () {
+        // Hide the error message (if present)
+        var errorMessage = document.getElementById('successMessage');
+        if (errorMessage) {
+            errorMessage.style.display = 'none';
+        }
+
+        // Hide the logout message (if present)
+        var logoutMessage = document.getElementById('existMessage');
+        if (logoutMessage) {
+            logoutMessage.style.display = 'none';
+        }
+    }, 5000);
+	</script>
 
 
-
-    <script src="script.js"></script>
+    <script src="./assets/user/script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

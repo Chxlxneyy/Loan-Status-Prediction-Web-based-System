@@ -1,0 +1,1 @@
+[2023-10-16 11:10:16,188] http-nio-8080-exec-5 com.example.demo.controller.frontPageController 73 INFO   - Saved a new user with email: doctor@gmail.com
